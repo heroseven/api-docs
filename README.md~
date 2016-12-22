@@ -268,7 +268,8 @@ Cuerpo del *request*:
   "card_number": 4444333322221111,  
   "cvv": 123,
   "expiration_month": 12,
-  "expiration_year": 2020
+  "expiration_year": 2020,
+  "fingerprint": "MiDispositivo123465"
 }
 ```
 
@@ -277,11 +278,12 @@ Cuerpo del *request*:
 | *first_name <br> Min: 2 Max: 50 | *string* | Nombres del tarjetahabiente. **Ejemplo**: `Richard`  |
 | *last_name <br> Min: 2 Max: 50 | *string* | Apellidos del tarjetahabiente. **Ejemplo**: `Hendricks` |
 | *email <br> Min: 5 Max: 50 | *string* |  Dirección de correo electrónico del cliente. **Ejemplo**: `richard@piedpiper.com`  |
-| *currency_code <br> Min: 3 Max: 3 | *string* | Código de la moneda en tres letras (Formato ISO 4217).   **Ejemplo**: `PEN` |
+| *currency <br> Min: 3 Max: 3 | *string* | Código de la moneda en tres letras (Formato ISO 4217).   **Ejemplo**: `PEN` |
 | *card_number <br> Min: Max: | *integer* | Numero de la tarjeta. **Ejemplo**: `4444333322221111` |
 | *cvv <br> Min: Max: | *integer* | CVV de la tarjeta. **Ejemplo**: `123` |
 | *expiration_month <br> Min: Max: | *integer* |  Mes de expiración de la tarjeta. **Ejemplo**: `09` |
 | *expiration_year <br> Min: Max: | *integer* | Año de expiración de la tarjeta. **Ejemplo**: `2020` |
+| fingerprint <br> Min: Max: | *string* | (opcional) Un identificador único del dispositivo usado por del cliente. **Ejemplo**: `2020`|
 
 
 **Respuesta**
@@ -389,7 +391,7 @@ Cuerpo del *request*:
 | *amount <br> Min: 3 Max: 8 | *integer* | Monto de la venta o cargo. Sin punto decimal. **Ejemplo**: `19900`  (199.00 soles) |
 | *installments <br> Min: 1 Max: 2 | *integer* | (opcional) Coutas, con un valor máximo de 36  **Ejemplo**: `2` |
 | *description <br> Min: 5 Max: 80 | *string* | Descripción de la venta. **Ejemplo**: `Zapatillas Snoke Rojas` |
-| cvv <br> Min: 3 Max: 4 | *string* | (opcional) CVV de la tarjeta. **Ejemplo**: `123` |
+| cvv <br> Min: 2 Max: 50 | *string* | (opcional) CVV de la tarjeta. **Ejemplo**: `123` |
 
 
 **Respuesta**
@@ -442,7 +444,17 @@ Cuerpo de la respuesta:
 }
 ```
 
-
+| Campo    | Tipo de dato  | Descripción  |
+| :------- |:-------------:| :------------|
+| *name <br> Min: 2 Max: 50 | *string* | Nombres del cliente.  |
+| *last_name <br> Min: 2 Max: 50 | *string* | Apellidos del cliente. |
+| *email <br> Min: 5 Max: 50 | *string* |  Dirección de correo electrónico del cliente.  |
+| *currency <br> Min: 3 Max: 3 | *string* | Código de la moneda en tres letras (Formato ISO 4217).|
+| *card_number <br> Min: Max: | *integer* | Numero de la tarjeta. |
+| *cvv <br> Min: Max: | *integer* | CVV de la tarjeta. |
+| *expiration_month <br> Min: Max: | *integer* |  Mes de expiración de la tarjeta. |
+| *expiration_year <br> Min: Max: | *integer* | Año de expiración de la tarjeta. |
+| fingerprint <br> Min: Max: | *string* | (opcional) Un identificador único del dispositivo usado por del cliente. |
 
 
 
