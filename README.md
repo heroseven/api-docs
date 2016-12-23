@@ -254,7 +254,7 @@ Headers:
 
 ```md
 Content‐Type: application/json
-Authorization: Bearer <<CodigoComercio>>  
+Authorization: Code <<CodigoComercio>>  
 ```
 
 Cuerpo del *request*:
@@ -441,7 +441,6 @@ Cuerpo de la respuesta:
   "operations": []
 }
 ```
-
 
 
 
