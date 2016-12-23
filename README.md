@@ -5,7 +5,7 @@
 <p class="warning">
 
 [ATENCIÓN] Esta versión del API (v2.0-beta) se encuentra en pruebas, si deseas acceder a
-testearla y ayudarnos, tienes que seguir los <a href="#" jump-to-id="testear-la-beta">siguientes pasos</a> previamente. Además, te invitamos a leer la publicación con todas las novedades.
+testearla y ayudarnos, tienes que seguir los <a href="#" jump-to-id="testear-la-beta">siguientes pasos</a> previamente. Además, te invitamos a leer la [publicación](https://medium.com/team-culqi/el-nuevo-api-v2-de-culqi-eb68c835bdcd#.bbkglso8i) con todas las novedades.
 
 </p>
 
