@@ -1,15 +1,14 @@
 # Culqi API  
 
-> "Un API es la interfaz de usuario para un desarrollador."
+> "An API is the user interface for a developer."
 
 <p class="warning">
 
-[ATENCIÓN] Esta versión del API (v2.0-beta) se encuentra en pruebas, si deseas acceder a
-testearla y ayudarnos, tienes que seguir los <a href="#" jump-to-id="testear-la-beta">siguientes pasos</a> previamente. Además, te invitamos a leer la [publicación](https://medium.com/team-culqi/el-nuevo-api-v2-de-culqi-eb68c835bdcd#.bbkglso8i) con todas las novedades.
+[ATENCIÓN] This version of the API (v2.0-beta) is in testing, if you want to access 8 test it and help us, you have to follow the <a href="#" jump-to-id="testear-la-beta">following steps</a> previously. In addition, we invite you to read the [publication](https://medium.com/team-culqi/el-nuevo-api-v2-de-culqi-eb68c835bdcd#.bbkglso8i) with all the news.
 
 </p>
 
-## Introducción
+## Introduction
 
 
 ```
@@ -18,7 +17,11 @@ URL Base:  'https://api.culqi.com/api/v2'
 ```
 
 
-El API de [Culqi](http://culqi.com) está construido bajo los estándares de [REST](https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional). Es decir, nuestra API posee URLs orientada a **recursos**, y hace uso de los **[códigos](https://httpstatuses.com/) de respuesta HTTP**  para indicar los posibles errores en el API. Es importante indicar que se encuentra implementada una [autenticación HTTP](https://tools.ietf.org/html/rfc6750) (*Bearer Token*), solicitada en cada *request* o petición. Además, soportamos las [solicitudes HTTP de origen cruzado](https://developer.mozilla.org/es/docs/Web/HTTP/Access_control_CORS) (*CORS*), permitiendo que tu sitio y Culqi puedan interactuar seguramente mediante nuestra API desde una aplicación cliente (aunque NUNCA deberías exponer tu **API Key** en el código de la aplicación web cliente). Por otro lado, un objeto **JSON** es retornado en cada una las peticiones hacia el API, incluyendo los [errores](#/?id=errores).<br>
+The API of [Culqi](http://culqi.com) Is built to the standards of [REST](https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional).That is, our API has URLs oriented to ** resources **, and makes use of HTTP ** ** [codes] (https://httpstatuses.com/) ** to indicate possible API errors. It is important to note that an [HTTP authentication] (https://tools.ietf.org/html/rfc6750) (* Bearer Token *), implemented on each * request * or request, is implemented. In addition, we support [cross-origin HTTP requests] (https://developer.mozilla.org/en/docs/Web/HTTP/Access_control_CORS) (* CORS *), allowing your site and Culqi to be able to securely interact with our API From a client application (although you should NEVER expose your ** API Key ** in the client web application code). On the other hand, a ** JSON ** object is returned on each request to the API, including [errors] (#/?id=errors).<br>
+
+
+
+
 
 
 
