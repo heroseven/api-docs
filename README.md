@@ -20,12 +20,7 @@ URL Base:  'https://api.culqi.com/api/v2'
 The API of [Culqi](http://culqi.com) Is built to the standards of [REST](https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional).That is, our API has URLs oriented to ** resources **, and makes use of HTTP ** ** [codes] (https://httpstatuses.com/) ** to indicate possible API errors. It is important to note that an [HTTP authentication] (https://tools.ietf.org/html/rfc6750) (* Bearer Token *), implemented on each * request * or request, is implemented. In addition, we support [cross-origin HTTP requests] (https://developer.mozilla.org/en/docs/Web/HTTP/Access_control_CORS) (* CORS *), allowing your site and Culqi to be able to securely interact with our API From a client application (although you should NEVER expose your ** API Key ** in the client web application code). On the other hand, a ** JSON ** object is returned on each request to the API, including [errors] (#/?id=errors).<br>
 
 
-
-
-
-
-
-Finalmente, para que puedas comenzar a experimentar con nuestra API, todas las cuentas registradas en [Culqi]() poseen llaves en **modo de pruebas** ([Regístrate](https://integ-panel.culqi.com/#/registro) y obtén tu API Key) y en el modo de producción. Usando las **llaves de prueba** las transacciones nunca pasan por las redes bancarias y no tienen ningún costo. (¡Recuerda usar [tarjetas de prueba](https://developers.culqi.com/pruebas/#tarjetas), no tarjetas reales al probar!).
+Finally, so that you can start experimenting with our API, all accounts registered in [Culqi] () have keys in ** test mode ** ([Register] (https://integ-panel.culqi.com/# / Register) and get your API Key) and in production mode. Using the ** test keys ** transactions never go through the banking networks and have no cost. (Remember to use [test cards] (https://developers.culqi.com/tests/#cards), not actual cards when testing!).
 
 
 <p class="tip">
@@ -34,26 +29,23 @@ Finalmente, para que puedas comenzar a experimentar con nuestra API, todas las c
 
 
 
-### Testear la beta
+### Testing the beta 
+The current version of the API is found as a trial version. If you want to be a part and help us to improve, please follow the next steps.
 
-La presente versión del API se encuentra como una versión en prueba. Si deseas ser parte y ayudarnos a mejorar por favor sigue los siguientes pasos.
-
-1. Ingresar al panel de Integración de Culqi.
-2. Dirigirte a la sección Desarrolladores -> API Keys.
-3. Encontrar el botón "Actualizar API v2" y darle click. Una vez que hayas confirmado la actualización. Obtendrás nuevas llaves y código de comercio. :)
+1. Enter the Culqi Integration panel.
+2. Go to the Developers -> API Keys section.
+3. Find the button "Update API v2" and click. Once you have confirmed the update. You will get new keys and trade code. :)
 
 
 <img src="https://cdn-images-1.medium.com/max/800/1*IoSK0H5wgk7ZrwCW6Nv2lA.gif" alt="preview" width="500">
 
 
 
-### Autenticación
+### Authentication 
+In order to access and use the Culqi API you need to know and have your API Keys (authentication keys) previously. Under HTTP authentication, on each request. 
 
-Para poder acceder y utilizar el Culqi API necesitas previamente conocer y tener tus API Keys (llaves de autenticación). Bajo autenticación HTTP, en cada request.  
-
-Las llaves las puedes obtener en Desarrollo > API Keys de tu [panel Culqi](http://integ-panel.culqi.com).
-
-Todas las peticiones al API deben ser fechas bajo HTTPS, las llamadas hechas bajo HTTP plano fallarán (en producción) y las peticiones sin autenticación también fallarán.
+The keys can be obtained in Development> API Keys of your [Culqi panel] (http://integ-panel.culqi.com). 
+All requests to the API must be dates under HTTPS, calls made under flat HTTP will fail (in production) and requests without authentication will also fail.
 
 
 ***Código de Comercio (llave pública)*** <br>
@@ -62,23 +54,22 @@ Todas las peticiones al API deben ser fechas bajo HTTPS, las llamadas hechas baj
 Authorization: Code <<CodigoComercio>>  
 ```
 
-Ejemplo: `pk_test_J0BnI4vcidMGdxxx`
+Example: `pk_test_J0BnI4vcidMGdxxx`
 
 ***API Key (llave privada)*** <br>   
 
 ```md
 Authorization: Bearer <<ApiKey>>  
 ```
-Ejemplo: `sk_test_ujVxc7JMCr0ivxxx`
+Example: `sk_test_ujVxc7JMCr0ivxxx`
 
-### Errores
+###Errors 
 
-Por medio de nuestro API, podrás ser notificado con toda la información en caso
-de cualquier error al momento de crear cualquier llamada a nuestro servicio.
+Through our API, you can be notified with all the information in case of any error when creating any call to our service. 
 
-La API de Culqi utiliza el standard **códigos de estado HTTP** ([HTTP status codes](http://www.ietf.org/assignments/http-status-codes/http-status-codes.xml)) en todas sus respuestas para indicar si se pudieron procesar las solicitudes con éxito o fallaron.
+The Culqi API uses the standard ** HTTP status codes ** (http://www.ietf.org/assignments/http-status-codes/http-status-codes.xml) 
 
-Ejemplo de respuesta de error (JSON):
+In all their responses to indicate whether the applications could be processed successfully or failed. Example of Error Response (JSON):
 
 
 ```json
@@ -91,44 +82,45 @@ Ejemplo de respuesta de error (JSON):
 }
 ```
 
-- `type` *(string)*:  Refiere el tipo de error obtenido.<br>
-- `code` *(string)* opcional: Refiere al código de error definido en Culqi.<br>
-- `message` *(string)*: Mensaje de uso interno para que puedas conocer el detalle del error.<br>
-- `user_message` *(string)*: Mensaje que debes de mostrar al usuario.<br>
+- `type` *(string)*:  It refers to the type of error obtained.<br>
+- `code` *(string)* opcional: Refers to the error code defined in Culqi.<br>
+- `message` *(string)*: Internal usage message so you can know the detail of the error.<br>
+- `user_message` *(string)*: Message that you must show the user.<br>
 
 
 <hr>
 
-#### Tipos de errores
+#### Types of errors
 
-`tipo` depende del HTTP Status.
+`type` depends on HTTP Status.
 
 
-| tipo (string)       |               |
+| type  (string)       |               |
 |:------------- |:--------------|
-| **error_peticion**| HTTP 400 - Error cuando la llamada tiene una sintaxis inválida. |
-| **error_autenticacion**   | HTTP 401 Error - La petición no pudo ser procesada debido a problemas con la llave API|
-| **error_tarjeta**       | HTTP 402 - No se pudo realizar el cargo o cobro a una tarjeta.|
-| **error_recurso** | HTTP 404 Error - El recurso no puede ser encontrado, es inválido o tiene un estado diferente al permitido. |
-| **error_parametro** | HTTP 422 - Este error ocurre cuando algún parámetro de cualquier petición es inválido. |
-| **error_api_limite** | HTTP 429- Estás haciendo muchas peticiones rápidamente al API. |
-| **error_api** | HTTP 500 y 503 Errors - Engloba cualquier otro tipo de error (ejemplo: problema temporal con los servidores de Culqi) y debería de ocurrir muy pocas veces. |
+| **error_peticion**| HTTP 400 - An error occurred when the call has an invalid syntax. |
+| **error_autenticacion**   | HTTP 401 Error - The request could not be processed due to issues with the API key|
+| **error_tarjeta**       | HTTP 402 - Could not charge or charge a card.|
+| **error_recurso** | HTTP 404 Error - The resource can not be found, is invalid or has a different state to that allowed. |
+| **error_parametro** | HTTP 422 - This error occurs when any parameter of any request is invalid. |
+| **error_api_limite** | HTTP 429- You are making many requests quickly to the API. |
+| **error_api** | HTTP 500 y 503 Errors - It encompasses any other type of error (eg, temporary problem with Culqi servers) and should occur very rarely. |
 
 
 <hr>
 
-#### Códigos de error
+#### Error codes 
 
-Los códigos de error (`codigo_error`) son especificaciones detalladas de los errores, en estas tablas ubicaras los códigos de error por cada recurso.
+Error codes (`code_error`) are detailed specifications of the errors, in these tables you will locate the error codes for each resource.
 
-- Autenticación
+- Authentication
+
 
 | codigo_error (string)       |               |
 |:------------- |:--------------|
-| **auth_error_header** | No está presente el header de autenticación. Debes autenticarte usando tu Código de Comercio (llave pública) o API Key (llave secreta) como Bearer Token. |
-| **auth_api_key** | El API Key usado es inválido. |
-| **auth_cod_comercio** | El Código de comercio usado es inválido. |
-| **auth_deshabilitado** | Error de autenticación. Tu comercio está deshabilitado. |
+| **auth_error_header** | The authentication header is not present. You must authenticate using your Trade Code (public key) or API Key (secret key) as Bearer Token. |
+| **auth_api_key** | The API Key used is invalid. |
+| **auth_cod_comercio** | The Used Trade Code is invalid. |
+| **auth_deshabilitado** | Authentication failed. Your trade is disabled. |
 
 
 - Tokens
