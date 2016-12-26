@@ -368,25 +368,25 @@ Body of *request*:
 
 | Field   | Datatype  | Description |
 | :------- |:-------------:| :------------|
-| *token <br> Min: 32 Max: 32 | *string* | Token de tarjeta creado anteriormente.   |
-| *order_id <br> Min: 5 Max: 80 | *string* | Identificador de la orden o pedido, debe ser único por cargo. **Ejemplo**: `P000007`  |
-| *first_name <br> Min: 2 Max: 50 | *string* | Nombres del cliente. **Ejemplo**: `Richard`  |
-| *last_name <br> Min: 2 Max: 50 | *string* | Apellidos del cliente. **Ejemplo**: `Hendricks` |
-| *email <br> Min: 5 Max: 50 | *string* | Nombres del cliente. **Ejemplo**: `richard@piedpiper.com` |
-| *address <br> Min: 5 Max: 100 | *string* | Dirección del cliente. **Ejemplo**: `Av. Brasil 123` |
-| *address_city <br> Min: 2 Max: 30 | *string* | Ciudad del cliente. **Ejemplo**: `Lima` |
-| *phone_number <br> Min: 5 Max: 15 | *integer* | Número de teléfono del cliente. **Ejemplo**: `34343443434` |
-| *country_code <br> Min: 2 Max: 2 | *string* | Código ISO‐3166‐1 Alfa 2 del país del cliente. **Ejemplo**: `PE`, `US`  |
-| *currency_code <br> Min: 3 Max: 3 | *string* | Código de la moneda en tres letras (Formato ISO 4217).   **Ejemplo**: `PEN` |
-| *amount <br> Min: 3 Max: 8 | *integer* | Monto de la venta o cargo. Sin punto decimal. **Ejemplo**: `19900`  (199.00 soles) |
-| *installments <br> Min: 1 Max: 2 | *integer* | (opcional) Coutas, con un valor máximo de 36  **Ejemplo**: `2` |
-| *description <br> Min: 5 Max: 80 | *string* | Descripción de la venta. **Ejemplo**: `Zapatillas Snoke Rojas` |
-| cvv <br> Min: 3 Max: 4 | *string* | (opcional) CVV de la tarjeta. **Ejemplo**: `123` |
+| *token <br> Min: 32 Max: 32 | *string* | Previously created card token.  |
+| *order_id <br> Min: 5 Max: 80 | *string* | Identifier of the order or order, must be unique per charge. **Example**: `P000007`  |
+| *first_name <br> Min: 2 Max: 50 | *string* | Customer names. **Example**: `Richard`  |
+| *last_name <br> Min: 2 Max: 50 | *string* | Surname of the client. **Example**: `Hendricks` |
+| *email <br> Min: 5 Max: 50 | *string* | Customer names. **Example**: `richard@piedpiper.com` |
+| *address <br> Min: 5 Max: 100 | *string* | Customer's city. **Example**: `Av. Brasil 123` |
+| *address_city <br> Min: 2 Max: 30 | *string* | Customer's city. **Example**: `Lima` |
+| *phone_number <br> Min: 5 Max: 15 | *integer* | Customer's telephone number. **Example**: `34343443434` |
+| *country_code <br> Min: 2 Max: 2 | *string* | Code ISO-3166-1 Alpha 2 of the customer's country. **Example**: `PE`, `US`  |
+| *currency_code <br> Min: 3 Max: 3 | *string* | Three-letter currency code (ISO 4217 format).   **Example**: `PEN` |
+| *amount <br> Min: 3 Max: 8 | *integer* | Amount of the sale or charge. No decimal point. **Example**: `19900`  (199.00 soles) |
+| *installments <br> Min: 1 Max: 2 | *integer* | (opcional) Installments, with a maximum value of 36 ** Example **: `2` |
+| *description <br> Min: 5 Max: 80 | *string* | Description of the sale. **Example**:: `Zapatillas Snoke Rojas` |
+| cvv <br> Min: 3 Max: 4 | *string* | (opcional) CVV of the card. **Example**: `123` |
 
 
-**Respuesta**
+** Response ** 
 
-Cuerpo de la respuesta:
+Response Body:
 
 ```json
 {
@@ -440,23 +440,21 @@ Cuerpo de la respuesta:
 
 
 ---
-## Planes
+## Plans 
 
-Los planes permiten a tu negocio manejar suscripciones (pagos recurrentes). Mediante la creación de uno tus usuarios
-podrán suscribirse al mismo y estar sujetos a cargos/cobros recurrentes. Tal como lo hacen muchos modelos de negocio actualmente (Spotify, Netflix, etc). Por ejemplo: Creación de un plan premium (mensual o anual) para ofrecer tus contenidos especiales en tu sitio.
+Plans allow your business to handle subscriptions (recurring payments). By creating one, your 446 users can subscribe to it and be subject to recurring charges / charges. As do many business models today (Spotify, Netflix, etc). For example: Create a premium plan (monthly or annual) to offer your special content on your site.
 
-
-| Endpoints     | Funcionalidad |
+| Endpoints     | Funcionality |
 | :-------------| -----------:|
-| `POST` /plans/ | Crear un plan |
+| `POST` /plans/ | Create plan |
 
 
-### Crear un plan
+### Create a plan
 
 **POST** https://api.culqi.com/api/v2/plans <br>
-Autenticación: <a href="#" jump-to-id="autenticación">`API Key`</a>
+Authentication: <a href="#" jump-to-id="autenticación">`API Key`</a>
 
-Se crea un plan mediante una petición POST.
+A plan is created by a POST request.
 
 **Request**
 
@@ -467,7 +465,7 @@ Content‐Type: application/json
 Authorization: Bearer <<Apikey>>  
 ```
 
-Cuerpo del *request*:
+Body of *request*:
 
 ```json
 {
@@ -482,24 +480,24 @@ Cuerpo del *request*:
 }
 ```
 <p class="tip">
-**Nota:** El ejemplo de la parte superior crearía un plan que cobraría cada mes **45 Soles**, y con **5 días** de prueba (sin cobro).
+** Note: ** The example above would create a plan that would charge each month ** 45 Suns **, and with ** 5 days ** of trial (no charge).
 </p>
 
 
-| Campo    | Tipo de dato  | Descripción  |
+| Field   | Datatype  | Description |
 | :------- |:-------------:| :------------|
-| *alias <br> Min: 5 Max: 80 | *string* | ID designado para el plan a crear. **Ejemplo**: `plan-premium`, `PLAN002` |
-| *name <br> Min: 2 Max: 50 | *string* | Nombre de tu plan. **Ejemplo**: `Plan Premium` |
-| *amount <br> Min: 3 Max: 8 | *integer* | Monto del plan a cobrar recurrentemente. Sin punto decimal.  **Ejemplo**: `5000` |
-| *currency_code <br> Min: 3 Max: 3 | *string* | Código de la moneda en tres letras (Formato ISO 4217). **Ejemplo**: `PEN` o `USD` |
-| *interval <br> Min: 3 Max: 5 | *string* | Los valores disponibles son day, week, month y year.  **Ejemplo**: `month` |
-| *interval_count <br> Min: 1 Max: 3 | *integer* | Cantidad de cada cuanto se deben ejecutar los cargos. **Ejemplo**: `1` |
-| *trial_days <br> Min: 1 Max: 3 | *integer* | Número de días del periodo de prueba (sin costo).  **Ejemplo**: `5` |
-| *limit <br> Min: 1 Max: 3 | *integer* | (opcional) Limite de cargos a realizar. Si no se define, es automáticamente 0 (sin límite). **Ejemplo**: `12` (cobrar 12 veces) |
+| *alias <br> Min: 5 Max: 80 | *string* | ID assigned to the plan to be created. **Example**: `plan-premium`, `PLAN002` |
+| *name <br> Min: 2 Max: 50 | *string* | Name of your plan. **Example**: `Plan Premium` |
+| *amount <br> Min: 3 Max: 8 | *integer* | Amount of the plan to be recalculated. No decimal point. **Example**: `5000` |
+| *currency_code <br> Min: 3 Max: 3 | *string* | Three-letter currency code (ISO 4217 format). **Example**: `PEN` o `USD` |
+| *interval <br> Min: 3 Max: 5 | *string* | The available values ​​are day, week, month and year. **Example**: `month` |
+| *interval_count <br> Min: 1 Max: 3 | *integer* | Amount of each how much the charges must be executed. **Example**: `1` |
+| *trial_days <br> Min: 1 Max: 3 | *integer* | Number of days of the trial period (no cost). **Example**: `5` |
+| *limit <br> Min: 1 Max: 3 | *integer* | (opcional) Limit of charges to be made. If not defined, it is automatically 0 (no limit). **Example*: `12` (Charge 12 times) |
 
-**Respuesta**
+**Response**
 
-Cuerpo de la respuesta:
+Body of the response:
 
 ```json
 {
@@ -517,37 +515,35 @@ Cuerpo de la respuesta:
 }
 ```
 
-| Campo    | Tipo de dato  | Descripción  |
+| Field   | Datatype  | Description |
 | :------- |:-------------:| :------------|
-| *id<br> Min: 2 Max: 50 | *string* | Identificador del plan, es generado automáticamente.  |
-| *creation_date<br> Min: 2 Max: 50 | *integer* | Fecha de creación en formato UNIX Timestamp. |
-| *alias<br> Min: 2 Max: 50 | *string* | ID designado para el plan creado.  |
-| *name <br> Min: 2 Max: 50 | *string* | Nombre de tu plan.  |
-| *amount <br> Min: 3 Max: 8 | *integer* | Monto del plan a cobrar recurrentemente. Sin punto decimal. |
-| *currency_code <br> Min: 3 Max: 3 | *string* | Código de la moneda en tres letras (Formato ISO 4217).  |
-| *interval <br> Min: 3 Max: 5 | *string* | Los valores disponibles son day, week, month y year.  **Ejemplo**: `month` |
-| *interval_count <br> Min: 1 Max: 3 | *integer* | Cantidad de cada cuanto se deben ejecutar los cargos. **Ejemplo**: `1` |
-| *limit <br> Min: 1 Max: 3 | *integer* | Limite de cargos a realizar. |
-| *trial_days <br> Min: 1 Max: 3 | *integer* | Número de días de periodo de prueba.|
+| *id<br> Min: 2 Max: 50 | *string* | Identifier of the plan, it is generated automatically.  |
+| *creation_date<br> Min: 2 Max: 50 | *integer* | Date created in UNIX Timestamp format. |
+| *alias<br> Min: 2 Max: 50 | *string* | ID assigned to the created plan. |
+| *name <br> Min: 2 Max: 50 | *string* | Name of your plan.  |
+| *amount <br> Min: 3 Max: 8 | *integer* | Amount of the plan to be recalculated. No decimal point. |
+| *currency_code <br> Min: 3 Max: 3 | *string* | Three-letter currency code (ISO 4217 format).  |
+| *interval <br> Min: 3 Max: 5 | *string* | The available values are day, week, month and year. **Example**: `month` |
+| *interval_count <br> Min: 1 Max: 3 | *integer* | Amount of each how much the charges must be executed. **Example**: `1` |
+| *limit <br> Min: 1 Max: 3 | *integer* | Limit of charges to be made. |
+| *trial_days <br> Min: 1 Max: 3 | *integer* | Number of days of trial period.|
 
 
 ---
 
-## Suscripciones
+## Subscriptions 
 
-Las suscripciones te permiten realizarles cargos a tu cliente de forma recurrente. Esta suscripción tiene como base a un plan y a un token. El plan define como se realizarán los cargos y el token identifica la tarjeta a la que se realizarán los cargos.
+Subscriptions allow you to charge customers on a recurring basis. This subscription is based on a plan and a token. The plan defines how the charges will be made and the token identifies the card to which the charges will be made. 537 538 539 
 
-
-### Crear una suscripción
-
+### Create a Subscription
 
 **POST** https://api.culqi.com/api/v2/suscriptions <br>
-Autenticación: `Bearer`
+Authentication: `Bearer`
 
-Crea una nueva suscripción.
+Create a new subscription.
 
 <p class="warning">
-**Nota:** Para crear una suscripción a un cliente, previamente debes tener <a href="#" jump-to-id="planes">planes</a> creados.
+** Note: ** To create a customer subscription, you must first have <a href="#" jump-to-id="planes">plans</a> created.
 </p>
 **Request**
 
@@ -558,7 +554,7 @@ Content‐Type: application/json
 Authorization: Bearer <<Bearer>>  
 ```
 
-Cuerpo del *request*:
+Body of *request*:
 
 ```json
 {
@@ -574,21 +570,23 @@ Cuerpo del *request*:
 }
 ```
 
-| Campo    | Tipo de dato  | Descripción  |
+| Field   | Datatype  | Description |
 | :------- |:-------------:| :------------|
-| *plan_alias <br> Min: 5 Max: 80 | *string* | Alias del plan que se asignará a la suscripción. p. ej: PLAN002.   |
-| *token_id <br> Min: 32 Max: 32 | *string* | El ID del Token de tarjeta creado anteriormente.   |
-| *first_name <br> Min: 2 Max: 50 | *string* | Nombre del cliente.   |
-| *last_name <br> Min: 2 Max: 50 | *string* | Apellido del cliente   |
-| *email <br> Min: 5 Max: 50 | *string* | Correo electrónico del cliente.  |
-| *address <br> Min: 5 Max: 100 | *string* | Dirección del cliente.   |
-| *address_city <br> Min: 2 Max: 30 | *string* | Ciudad del cliente. p. ej: Lima.   |
-| *country_code <br> Min: 2 Max: 2 | *string* | Código ISO‐3166‐1 Alfa 2 del país del cliente. p. ej: PE (Perú)   |
-| *phone_number <br> Min: 5 Max: 15 | *integer* | Número de teléfono del cliente   |
+| *plan_alias <br> Min: 5 Max: 80 | *string* | Alias of the plan to be assigned to the subscription. P. Eg PLAN002.   |
+| *token_id <br> Min: 32 Max: 32 | *string* | The Card Token ID created earlier.   |
+| *first_name <br> Min: 2 Max: 50 | *string* | Customer name.   |
+| *last_name <br> Min: 2 Max: 50 | *string* | Customer last name   |
+| *email <br> Min: 5 Max: 50 | *string* | Customer email. |
+| *address <br> Min: 5 Max: 100 | *string* | Customer address.   |
+| *address_city <br> Min: 2 Max: 30 | *string* | Customer's city. P. Ex: Lima.   |
+| *country_code <br> Min: 2 Max: 2 | *string* | Code ISO-3166-1 Alpha 2 of the customer's country. P. Eg PE (Peru)  |
+| *phone_number <br> Min: 5 Max: 15 | *integer* | Customer's telephone number   |
 
-**Respuesta**
 
-Cuerpo de la respuesta:
+**Response**
+
+Body of the response:
+
 
 ```json
 {
@@ -634,21 +632,23 @@ Cuerpo de la respuesta:
 }
 ```
 
-| Campo    | Tipo de dato  | Descripción  |
+
+| Field   | Datatype  | Description |
+
 | :------- |:-------------:| :------------|
-| *object <br> Min: 2 Max: 10 | *string* | El nombre del objeto retornado, en este caso "subscription"  |
-| *id <br> Min: 2 Max: 50 | *string* | El ID de la suscripción.  |
-| *creation_date <br> Min: 2 Max: 50 | *string* | La fecha de creación de la suscripción en formatio UNIX Timestamp.  |
-| *next_billing_date <br> Min: 2 Max: 50 | *string* | La fecha del siguiente cargo en formato UNIX Timestamp.  |
-| *first_name <br> Min: 2 Max: 50 | *string* | Nombres del cliente.  |
-| *last_name <br> Min: 2 Max: 50 | *string* | Apellido del cliente. |
-| *email <br> Min: 5 Max: 50 | *string* | Dirección de correo electrónico del cliente  |
-| *address <br> Min: 5 Max: 100 | *string* | Dirección del cliente. |
-| *address_city <br> Min: 2 Max: 30 | *string* | Ciudad del cliente. p. ej: Lima  |
-| *country_code <br> Min: 2 Max: 2 | *string* | Código ISO‐3166‐1 Alfa 2 del país del cliente. p. ej: PE (Perú)  |
-| *phone <br> Min: 5 Max: 15 | *string* | Número de teléfono del cliente.  |
-| *token <br> | *objeto* | El objeto Token con el que se creó la suscripción.  |
-| *plan <br>  | *objeto* | El objeto plan asociado a la suscripción.  |
+| *object <br> Min: 2 Max: 10 | *string* | The name of the returned object, in this case "subscription"  |
+| *id <br> Min: 2 Max: 50 | *string* | The subscription ID.  |
+| *creation_date <br> Min: 2 Max: 50 | *string* | The date of creation of the subscription in formatio UNIX Timestamp.  |
+| *next_billing_date <br> Min: 2 Max: 50 | *string* | The date of the next charge in UNIX Timestamp format.  |
+| *first_name <br> Min: 2 Max: 50 | *string* | Customer names. |
+| *last_name <br> Min: 2 Max: 50 | *string* | Client's last name. |
+| *email <br> Min: 5 Max: 50 | *string* | Customer email address.  |
+| *address <br> Min: 5 Max: 100 | *string* | Customer address. |
+| *address_city <br> Min: 2 Max: 30 | *string* | Customer's city. P. Ex: Lima  |
+| *country_code <br> Min: 2 Max: 2 | *string* | Code ISO-3166-1 Alpha 2 of the customer's country. P. Eg PE (Peru)  |
+| *phone <br> Min: 5 Max: 15 | *string* | Customer's telephone number.  |
+| *token <br> | *objeto* | The Token object with which the subscription was created.  |
+| *plan <br>  | *objeto* | The plan object associated with the subscription.  |
 
 
 
