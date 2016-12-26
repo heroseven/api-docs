@@ -490,7 +490,7 @@ Body of *request*:
 | *name <br> Min: 2 Max: 50 | *string* | Name of your plan. **Example**: `Plan Premium` |
 | *amount <br> Min: 3 Max: 8 | *integer* | Amount of the plan to be recalculated. No decimal point. **Example**: `5000` |
 | *currency_code <br> Min: 3 Max: 3 | *string* | Three-letter currency code (ISO 4217 format). **Example**: `PEN` o `USD` |
-| *interval <br> Min: 3 Max: 5 | *string* | The available values ​​are day, week, month and year. **Example**: `month` |
+| *interval <br> Min: 3 Max: 5 | *string* | The available values are day, week, month and year. **Example**: `month` |
 | *interval_count <br> Min: 1 Max: 3 | *integer* | Amount of each how much the charges must be executed. **Example**: `1` |
 | *trial_days <br> Min: 1 Max: 3 | *integer* | Number of days of the trial period (no cost). **Example**: `5` |
 | *limit <br> Min: 1 Max: 3 | *integer* | (opcional) Limit of charges to be made. If not defined, it is automatically 0 (no limit). **Example*: `12` (Charge 12 times) |
@@ -634,7 +634,6 @@ Body of the response:
 
 
 | Field   | Datatype  | Description |
-
 | :------- |:-------------:| :------------|
 | *object <br> Min: 2 Max: 10 | *string* | The name of the returned object, in this case "subscription"  |
 | *id <br> Min: 2 Max: 50 | *string* | The subscription ID.  |
