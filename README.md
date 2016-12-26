@@ -127,77 +127,77 @@ Error codes (`code_error`) are detailed specifications of the errors, in these t
 
 | codigo_error (string)       |               |
 |:------------- |:--------------|
-| **token_invalido**| Token inválido o token expirado. |
-| **token_corrupto**| Token con data corrupta, algun parametro invalido. Intentar crear uno nuevo. |
-| **a_invalido**   | El año de vencimiento de la tarjeta es inválido.|
-| **m_invalido**   | El mes de vencimiento de la tarjeta es inválido.|
-| **cvv_invalido**       | El código de seguridad (CVV) de la tarjeta es inválido.|
+| **token_invalido**| Invalid token or expired token. |
+| **token_corrupto**| Token with corrupted data, some parameter invalid. Try to create a new one. |
+| **a_invalido**   | The card's expiration year is invalid.|
+| **m_invalido**   | The card's expiration month is invalid.|
+| **cvv_invalido**       | The security code (CVV) of the card is invalid.|
 
-- Cargos
-
-| codigo_error (string)       |               |
-|:------------- |:--------------|
-| **operacion_denegada** | La operación ha sido denegada por el banco que emitió la tarjeta. |
-| **fondos_insuficientes** | La tarjeta no tiene fondos suficientes para realizar el cargo. |
-| **tarjeta_perdida** | La tarjeta ha sido reportada como perdida. |
-| **tarjeta_robada** | La tarjeta ha sido reportada como robada. |
-| **tarjeta_vencida** | La tarjeta ha vencido. |
-
-
-- Planes
+- Charges
 
 | codigo_error (string)       |               |
 |:------------- |:--------------|
-| **plan_hecho**| Este plan ya ha sido creado anteriormente. |
+| **operacion_denegada** | The transaction has been denied by the bank that issued the card. |
+| **fondos_insuficientes** | The card does not have sufficient funds to perform the charge.|
+| **tarjeta_perdida** | The card has been reported as lost. |
+| **tarjeta_robada** | The card has been reported stolen. |
+| **tarjeta_vencida** | The card has expired. |
 
-- Suscripciones
 
-| codigo_error (string)       |               |
-|:------------- |:--------------|
-| **plan_invalido**| El plan no existe. Intenta crear uno nuevo |
-| **suscripcion_invalida**| La suscripción no existe o tiene un estado difrente al requerido para realizar la operación. |
-
-- Devoluciones
+- Plans
 
 | codigo_error (string)       |               |
 |:------------- |:--------------|
-| **devolucion_inexistente** | El cargo no existe. |
-| **devolucion_hecha** | El cargo ya ha sido devuelto anteriormente. |
-| **devolucion_cargo** | El cargo no puede ser devuelto. |
-| **devolucion_monto_mayor** | El monto indicado para devolver no puede ser mayor al monto del cargo. |
-| **devolucion_monto_invalido** | El monto indicado es inválido. |
-| **devolucion_tiempo** | El tiempo limite para devolver el cargo fue excedido. |
-| **devolucion_imposible** | Imposible devolver esta transacción. Por favor, contacta soporte@culqi.com para recibir asistencia. |
-| **devolucion_rechazada** | La devolución fue rechazada por el procesador de pagos.  |
+| **plan_hecho**| This plan has already been created previously. |
+
+- Suscriptions
+
+| codigo_error (string)       |               |
+|:------------- |:--------------|
+| **plan_invalido**| The plan does not exist. Try to create a new one |
+| **suscripcion_invalida**| The subscription does not exist or has a different status to that required to perform the operation. |
+
+- Refunds
+
+| codigo_error (string)       |               |
+|:------------- |:--------------|
+| **devolucion_inexistente** | The charge does not exist. |
+| **devolucion_hecha** | The charge has already been returned previously. |
+| **devolucion_cargo** | The charge can not be refunded. |
+| **devolucion_monto_mayor** | The amount indicated to return can not be greater than the amount of the charge. |
+| **devolucion_monto_invalido** | The amount indicated is invalid. |
+| **devolucion_tiempo** | The time limit for returning the charge was exceeded. |
+| **devolucion_imposible** |Unable to return this transaction. Please contact soporte@culqi.com for assistance. |
+| **devolucion_rechazada** | The repayment was rejected by the payment processor.  |
 
 
 
 
-#### Códigos de estado HTTP
+#### HTTP status codes
 
-Culqi usa los siguientes códigos de estado HTTP en sus respuestas.
+Culqi uses the following HTTP status codes in their responses.
 
 | HTTP Status      |               |
 |------------- |--------------|
-| **200 - OK**|  Todo ha salido a la perfección.  |
-| **201 - Created**|  Un nuevo recurso ha sido creado. (POST)|
-| **204 - No Content**|  El recurso fue exitosamente eliminado. (DELETE) |
-| **400 - Bad Request**|  Todo ha salido a la perfección. |
-| **401 - Unauthorized**|  La API Key (llave API) utilizada es inválida. |
-| **402 - Payment Required**| El pago no pudo ser procesado. |
-| **404 - Not Found**|  El recurso solicitado en la llamada no existe. |
-| **422 - Unprocessable Entity**|  La sintaxis de la llamada es válida pero la información dentro de los parámetros es inválida. |
-| **500 y 503 - Server Errors**| Error en los servidores Culqi y la petición no pudo ser procesada. |
+| **200 - OK**|  Everything has come to perfection.  |
+| **201 - Created**|  A new resource has been created. (POST)|
+| **204 - No Content**|  The resource was successfully removed. (DELETE) |
+| **400 - Bad Request**|  Everything has come to perfection. |
+| **401 - Unauthorized**| The Key API used is invalid. |
+| **402 - Payment Required**| Payment could not be processed. |
+| **404 - Not Found**|  The resource requested in the call does not exist. |
+| **422 - Unprocessable Entity**|  The call syntax is valid but the information inside the parameters is invalid. |
+| **500 y 503 - Server Errors**| Failed on Culqi servers and the request could not be processed. |
 
 
 
 
-### ID de Rastreo
+### Tracking ID
 
-Cada petición API esta asociada un identificador de petición (request). Tu puedes encontrar este valor en los headers de respuesta, bajo el nombre de **`x-culqi-tracking-id`**. Este ID de rastreo también lo puedes encontrar en el panel de Culqi, en Desarrollo > API Log y en el detalle de cada petición. **Si necesitas contactar con nosotros para ayudarte con alguna petición en específico, brindando este ID de rastreo hará más fácil la ubicación y posterior solución del problema o incidencia.**
+Each request API is associated with a request identifier (request). You can find this value in the response headers, under the name of ** `x-culqi-tracking-id` **. This crawl ID can also be found in the Culqi panel, in Development> API Log, and in the detail of each request. ** If you need to contact us to help you with any specific request, providing this tracking ID will make it easier to locate and then resolve the problem or incident. **
 
 
-Headers de respuesta ejemplo:
+Response headers example:
 ```json
 {
   "date": "Fri, 16 Dec 2016 20:27:50 GMT",
@@ -211,7 +211,7 @@ Headers de respuesta ejemplo:
 ```
 ---
 
-### Versiones
+### Versions
 
 | Versión API    | Fecha  | Docs |
 | :------------- |:-------------:| ------------:|
@@ -223,14 +223,15 @@ Headers de respuesta ejemplo:
 
 
 ## Tokens
-*¿Qué son los tokens?* Los tokens podrían definirse como una forma de brindar seguridad a la información de tus clientes, recolectarla de manera segura es todo un ret y sin almacenar la información sentitiva en tus servidores. Por ello, Culqi ofrece una integración fácil con Culqi.JS en el navegador, pero tu puedes usar la misma técnica en otros entornos con el API en Tokens. Siempre teniendo en mente la seguridad.
 
-Los *tokens* deben ser creados con tu **Código de Comercio** (llave ṕublica), dicha llave debe estar incrustada en tu código seguramente en tu web o aplicaciones descargables como iPhone y Android. Luego de creado, puedes utilizar el *token* para la mayoría de nuestros recursos del API disponibles, como crear **cargos** y **suscripciones**.
+Tokens can be defined as a way to provide security to the information of your customers, to collect it safely is a complete ret without storing sentimental information on your servers. Therefore, Culqi offers easy integration with Culqi.JS in the browser, but you can use the same technique in other environments with the API in Tokens. 
+
+Always keeping safety in mind. * tokens * must be created with your ** Business Code **, this key must be embedded in your code, surely on your website or downloadable applications such as iPhone and Android. Once created, you can use the * token * for most of our available API resources, such as creating ** charges ** and ** subscriptions **.
 
 
 
 
-| Endpoints     | Funcionalidad |
+| Endpoints     | Functionality |
 | :-------------| -----------:|
 | `POST` /tokens/ | Crear un token |
 
@@ -240,8 +241,8 @@ Los *tokens* deben ser creados con tu **Código de Comercio** (llave ṕublica),
 **POST** https://api.culqi.com/api/v2/tokens <br>
 Autenticación: <a href="#" jump-to-id="autenticación">`Cod. Comercio`</a>
 
-Crea un token de operación, con duración temporal. El token luego es requerido para
-crear un **Cargo** o una **Suscripción**. Este token representa a una tarjeta de crédito o débito.
+Creates an operation token, with a temporary duration. The token is then required to create a ** Cargo ** or a ** Subscription **. 
+This token represents a credit or debit card. 
 
 **Request**
 
@@ -252,7 +253,7 @@ Content‐Type: application/json
 Authorization: Code <<CodigoComercio>>  
 ```
 
-Cuerpo del *request*:
+Body of *request*:
 
 ```json
 {
@@ -267,21 +268,20 @@ Cuerpo del *request*:
 }
 ```
 
-| Campo    | Tipo de dato  | Descripción  |
+| Field   | Datatype  | Description |
 | :------- |:-------------:| :------------|
-| *first_name <br> Min: 2 Max: 50 | *string* | Nombres del tarjetahabiente. **Ejemplo**: `Richard`  |
-| *last_name <br> Min: 2 Max: 50 | *string* | Apellidos del tarjetahabiente. **Ejemplo**: `Hendricks` |
-| *email <br> Min: 5 Max: 50 | *string* |  Dirección de correo electrónico del cliente. **Ejemplo**: `richard@piedpiper.com`  |
-| *currency_code <br> Min: 3 Max: 3 | *string* | Código de la moneda en tres letras (Formato ISO 4217).   **Ejemplo**: `PEN` |
-| *card_number <br> Min: Max: | *integer* | Numero de la tarjeta. **Ejemplo**: `4444333322221111` |
-| *cvv <br> Min: Max: | *integer* | CVV de la tarjeta. **Ejemplo**: `123` |
-| *expiration_month <br> Min: Max: | *integer* |  Mes de expiración de la tarjeta. **Ejemplo**: `09` |
-| *expiration_year <br> Min: Max: | *integer* | Año de expiración de la tarjeta. **Ejemplo**: `2020` |
+| *first_name <br> Min: 2 Max: 50 | *string* | Cardholder Names. **Example**: `Richard`  |
+| *last_name <br> Min: 2 Max: 50 | *string* | Cardholder surnames. **Example**: `Hendricks` |
+| *email <br> Min: 5 Max: 50 | *string* |  Client email address. **Example**: `richard@piedpiper.com`  |
+| *currency_code <br> Min: 3 Max: 3 | *string* | Three-letter currency code (Formato ISO 4217).   **Example**: `PEN` |
+| *card_number <br> Min: Max: | *integer* | Card number. **Ejemplo**: `4444333322221111` |
+| *cvv <br> Min: Max: | *integer* | CVV of the card. **Ejemplo**: `123` |
+| *expiration_month <br> Min: Max: | *integer* |  Card expiration month. **Ejemplo**: `09` |
+| *expiration_year <br> Min: Max: | *integer* | Card expiration year. **Ejemplo**: `2020` |
 
+** Response ** 
 
-**Respuesta**
-
-Cuerpo de la respuesta:
+Body Response:
 
 ```json
 {
@@ -300,44 +300,41 @@ Cuerpo de la respuesta:
 }
 ```
 
-| Campo    | Tipo de dato  | Descripción  |
+| Field   | Datatype  | Description |
 | :------- |:-------------:| :------------|
-| id <br> Min: Max: | *integer* | Identificador del token, esto lo usarás luego en la creación de Cargo o Suscriṕción. |
-| card_number <br> Min: 3 Max: 3 | *integer* | Número de la tarjeta (enmascarado). |
-| cardholder | *objeto* | Objeto con información del tarjetahabiente. |
-| brand_name <br> Min: 5 Max: 50 | *string* |  Marca de la tarjeta. Ejemplo: VISA, MasterCard.|
-| bank_name <br> Min: 2 Max: 50 | *string* | Nombre del banco |
-| bank_country <br> Min: 2 Max: 50 | *string* | País del banco.  |
+| id <br> Min: Max: | *integer* | Token identifier, this you will use later in the creation of Cargo or Suscription. |
+| card_number <br> Min: 3 Max: 3 | *integer* | Number of the card (masked). |
+| cardholder | *objeto* | Object with cardholder information. |
+| brand_name <br> Min: 5 Max: 50 | *string* |  Mark the card. Example: VISA, MasterCard.|
+| bank_name <br> Min: 2 Max: 50 | *string* | Name of the bank |
+| bank_country <br> Min: 2 Max: 50 | *string* | Bank country.  |
 
 
 
 ---
 
 
-## Cargos
+##Charges
 
-Para realizar el cobro con tarjeta de crédito o débito, debes crear un objeto de cargo para tarjeta. En caso de utilizar la llave en modo de prueba, la tarjeta no será cargada pero todo lo demás será simulado como si fuera un cargo real para que puedas realizar las pruebas necesarias. Al utilizar la llave en modo de producción (solamente si tu cuenta está activada), podrás realizar cargos reales a la tarjeta.
-Para realizar un cargo con tarjeta, primero debes tokenizar los datos de la misma.
+To make a charge with a credit or debit card, you must create a charge object for the card. In case of using the key in test mode, the card will not be charged but everything else will be simulated as if it were a real charge so that you can carry out the necessary tests. When using the key in production mode (only if your account is activated), you can charge the card. 320 To perform a card charge, you must first tokenize the card data.
 
 
-| Endpoints     | Funcionalidad |
+| Endpoints     | Funcionality |
 | :-------------| -----------:|
-| `POST` /charges/ | Crear un cargo |
+| `POST` /charges/ | Create a Charge |
 
 
-### Crear un cargo
+### reate a Charge
 
 <p class="tip">
-**Novedad**: Ahora en la creación de un cargo puedes hacer uso de **coutas**, dentro del
-request se encuentra como el campo "installments".
+** New **: Now in the creation of a charge you can make use of ** coutas **, within the request it is found as the "installments" field.
 </p>
 
 
 **POST** https://api.culqi.com/api/v2/charges <br>
 Autenticación: <a href="#" jump-to-id="autenticación">`API Key`</a>
 
-Crea un cargo (cobro) hacia el cliente mediante este método. Previamente debes haber generado
-un token de la tarjeta.
+Create a charge to the customer using this method. Previously you must have generated a token on the card.
 
 **Request**
 
@@ -348,7 +345,7 @@ Content‐Type: application/json
 Authorization: Bearer <<Apikey>>  
 ```
 
-Cuerpo del *request*:
+Body of *request*:
 
 ```json
 {
@@ -369,7 +366,7 @@ Cuerpo del *request*:
 }
 ```
 
-| Campo    | Tipo de dato  | Descripción  |
+| Field   | Datatype  | Description |
 | :------- |:-------------:| :------------|
 | *token <br> Min: 32 Max: 32 | *string* | Token de tarjeta creado anteriormente.   |
 | *order_id <br> Min: 5 Max: 80 | *string* | Identificador de la orden o pedido, debe ser único por cargo. **Ejemplo**: `P000007`  |
